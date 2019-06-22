@@ -1,43 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import IconButton from "@material-ui/core/IconButton";
-import InfoIcon from "@material-ui/icons/Info";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { FixedSizeGrid as Grid } from "react-window";
 
-import "./style.css";
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-    // flexWrap: "wrap",
-    justifyContent: "space-around"
-    // overflow: "hidden",
-    // backgroundColor: theme.palette.background.paper
-  },
-  gridList: {
-    width: 500,
-    height: 400
-  },
-  icon: {
-    color: "rgba(255, 255, 255, 0.54)"
-  },
-  card: {
-    maxWidth: 340,
-    // height: 1000,
-    marginBottom: 20
-  }
-}));
+import "./style.scss";
 
 /**
  * The example data is structured as follows:
@@ -108,8 +71,8 @@ const PostContainer = props => (
   <article className="card">
     <header className="card_thumb">
       <img
-        src="https://cdn.arstechnica.net/wp-content/uploads/2017/10/Futurama-800x449.jpg"
-        style={{ width: 400 }}
+        src="https://www.minhaseriefavorita.com/wp-content/uploads/2018/06/futurama-ainda-e-produzido.jpg"
+        style={{ width: 520 }}
       />
     </header>
     <div className="card_date">
@@ -117,16 +80,18 @@ const PostContainer = props => (
       <span className="card_date_month">May</span>
     </div>
     <div className="card_body">
-      <div className="card_category">
-        <a href="#">Photos</a>
-      </div>
-      <div className="card_title">
-        <a href="#">Bender should not be allowed on tv</a>
-      </div>
+      <div className="card_category">Photos</div>
+      <div className="card_title">Bender should not be allowed on tv</div>
       <div className="card_subtitle">
         Head in tv is better than nothing we are champions
       </div>
-      <p className="card_description">We tried everything</p>
+      <p className="card_description">
+        We tried everything We tried everythingWe tried everythingWe tried
+        everythingWe tried everythingWe tried everythingWe tried everythingWe
+        tried everythingWe tried everythingWe tried everythingWe tried
+        everythingWe tried everythingWe tried everythingWe tried everythingWe
+        tried everythingWe tried everythingWe tried everythingWe tried
+      </p>
     </div>
     <footer className="card_footer">
       <span className="icon icon--time">6 min</span>
