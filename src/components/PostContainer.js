@@ -62,14 +62,15 @@ const renderGrid = props => {
                         {author}
                       </a>
                     </div>
-                    <p className="card_description">
+                    <div className="card_description">
                       <Sanitize html={description} />
-                    </p>
+                    </div>
                   </div>
                   <footer className="card_footer">
                     <p className="icon icon-comment">
                       {tags.map(tag => (
                         <a
+                          key={tag}
                           href={`https://www.flickr.com/photos/tags/${tag.replace(
                             "#",
                             ""
