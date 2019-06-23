@@ -1,23 +1,22 @@
 $duration: 2s;
-$color: #ac00e6;
+$color: #1aff66;
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 100px;
   font-family: Open Sans;
   font-size: 16px;
   line-height: 1.4;
-  background-color: #d8e0e5;
+  background-color: #fff;
+}
+
+.card_container {
+  margin: 50px;
 }
 
 .card {
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translateX(-50%) translateY(-50%);
   background-color: #fff;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
   transition: box-shadow $duration;
