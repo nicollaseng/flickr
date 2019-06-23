@@ -5,6 +5,7 @@ import {
   dateFormatter,
   authorFormatter
 } from "../utils/Formatter";
+import { Loader } from "semantic-ui-react";
 import Sanitize from "../utils/Sanitize";
 import truncate from "lodash/truncate";
 import Navbar from "./Navbar";
@@ -12,13 +13,14 @@ import Notify from "./Notify";
 
 import "./style.scss";
 
-const PostContainer = props => {
+const renderGrid = props => {
   const posts = props.post;
-  const [snackFlag, setSnackFlag] = useState(false);
-  return (
-    <Fragment>
-      <Notify />
-      <Navbar snackFlag={snackFlag} handleSnackbar={setSnackFlag} />
+  const { loading } = props;
+
+  if (loading) {
+    return <Loader active inline="centered" style={{ marginTop: 20 }} />;
+  } else {
+    return (
       <div className="card_container">
         <Grid stackable columns={4}>
           {posts.map(post => {
@@ -86,6 +88,17 @@ const PostContainer = props => {
           })}
         </Grid>
       </div>
+    );
+  }
+};
+
+const PostContainer = props => {
+  const [snackFlag, setSnackFlag] = useState(false);
+  return (
+    <Fragment>
+      <Notify type="error" message="Sorry, its just a test :(" />
+      <Navbar snackFlag={snackFlag} handleSnackbar={setSnackFlag} />
+      {renderGrid(props)}
     </Fragment>
   );
 };

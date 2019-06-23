@@ -23,12 +23,8 @@ class Flickr extends Component {
   }
 
   render() {
-    console.log(this.state.data);
-    return (
-      <div>
-        <PostContainer post={this.state.data} />;
-      </div>
-    );
+    const { data } = this.state;
+    return <PostContainer post={data} loading={!data.length > 0} />;
   }
 }
 
