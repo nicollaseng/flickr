@@ -178,12 +178,13 @@ const NavBar = props => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Search for a tag"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
               inputProps={{ "aria-label": "Search" }}
+              onChange={props.handleSearch}
             />
           </div>
           <div className={classes.grow} />
