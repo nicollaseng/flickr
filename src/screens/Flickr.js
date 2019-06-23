@@ -16,13 +16,11 @@ class Flickr extends Component {
     };
   }
   fetchMore = async () => {
-    // var data = [];
     var data = await fetchData();
     this.setState(prevData => ({ data: [...prevData.data, ...data] }));
   };
 
   render() {
-    console.log("data", this.state.data);
     const { data } = this.state;
     return (
       <InfiniteScroll

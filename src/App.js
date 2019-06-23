@@ -1,10 +1,6 @@
-import React, { Component } from "react";
-import Flickr from "./screens";
+import React from "react";
+import Main from "./screens";
 
-class App extends Component {
-  render() {
-    return <Flickr />;
-  }
-}
+const App = () => <Main />;
 
 export default App;

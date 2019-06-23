@@ -5,7 +5,6 @@ import {
   dateFormatter,
   authorFormatter
 } from "../utils/Formatter";
-import { Loader } from "semantic-ui-react";
 import Sanitize from "../utils/Sanitize";
 import truncate from "lodash/truncate";
 import filter from "lodash/filter";
@@ -33,7 +32,6 @@ class PostContainer extends Component {
 
   renderGrid = props => {
     const posts = props.post;
-    const { loading } = this.props;
     const { postsFiltered } = this.state;
 
     return (

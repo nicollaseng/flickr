@@ -4,7 +4,7 @@ const fetchData = async () => {
   var data = [];
   await axios
     .get(
-      `${"https://cors-anywhere.herokuapp.com/"}https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=true`,
+      `${"https://cors-anywhere.herokuapp.com/"}https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=true&safe_search=safe`,
       { charset: "utf8" }
     )
     .then(response => {
