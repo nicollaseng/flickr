@@ -133,7 +133,7 @@ body {
   margin: 0;
   padding: 0;
   color: #666c74;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 27px;
   opacity: 0;
   transition: opacity $duration - 0.1s, transform $duration - 0.1s;
@@ -159,4 +159,6 @@ body {
 .icon {
   display: inline-block;
   vertical-align: middle;
+  font-size: 15.5px;
+  margin-bottom: 10px;
 }

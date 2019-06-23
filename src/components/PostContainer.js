@@ -23,6 +23,10 @@ const PostContainer = props => {
           length: 100,
           separator: ""
         });
+        let description = truncate(post.description, {
+          length: 100,
+          separator: ""
+        });
         console.log(title);
         return (
           <Grid.Column key={post.author_id}>
@@ -50,13 +54,21 @@ const PostContainer = props => {
                   </a>
                 </div>
                 <p className="card_description">
-                  <Sanitize html={post.description} />
+                  <Sanitize html={description} />
                 </p>
               </div>
               <footer className="card_footer">
                 <p className="icon icon-comment">
                   {tags.map(tag => (
-                    <a href="#">{tag} </a>
+                    <a
+                      href={`https://www.flickr.com/photos/tags/${tag.replace(
+                        "#",
+                        ""
+                      )}`}
+                    >
+                      {tag}
+                      {"  "}
+                    </a>
                   ))}
                 </p>
               </footer>
