@@ -80,19 +80,22 @@ class PostContainer extends Component {
                     </div>
                   </div>
                   <footer className="card_footer">
-                    <p className="icon icon-comment">
-                      {tags.map(tag => (
-                        <a
-                          key={tag}
-                          href={`https://www.flickr.com/photos/tags/${tag.replace(
-                            "#",
-                            ""
-                          )}`}
-                        >
-                          {tag}
-                          {"  "}
-                        </a>
-                      ))}
+                    <p className="icon">
+                      {tags.map((tag, index) => {
+                        if (index >= 6) return "";
+                        return (
+                          <a
+                            key={index}
+                            href={`https://www.flickr.com/photos/tags/${tag.replace(
+                              "#",
+                              ""
+                            )}`}
+                          >
+                            {tag}
+                            {"  "}
+                          </a>
+                        );
+                      })}
                     </p>
                   </footer>
                 </article>

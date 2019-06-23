@@ -10,7 +10,10 @@ const tagFormatter = post => {
   formated &&
     formated.length > 0 &&
     formated.map(format => {
-      return (tags = [...tags, `#${format}`]);
+      return (tags = [
+        ...tags,
+        `${format && format.length > 20 ? "" : `#${format}`}`
+      ]);
     });
   return tags;
 };
