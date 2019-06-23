@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Grid } from "semantic-ui-react";
 import {
   tagFormatter,
@@ -9,7 +9,7 @@ import { Loader } from "semantic-ui-react";
 import Sanitize from "../utils/Sanitize";
 import truncate from "lodash/truncate";
 import Navbar from "./Navbar";
-import Notify from "./Notify";
+import Notify, { toastNotify } from "./Notify";
 
 import "./style.scss";
 
@@ -28,14 +28,13 @@ const renderGrid = props => {
             let date = dateFormatter(post);
             let author = authorFormatter(post);
             let title = truncate(post.title, {
-              length: 100,
+              length: 60,
               separator: ""
             });
             let description = truncate(post.description, {
               length: 100,
               separator: ""
             });
-            console.log(title);
             return (
               <Grid.Column key={post.author_id}>
                 <article className="card">
@@ -93,11 +92,10 @@ const renderGrid = props => {
 };
 
 const PostContainer = props => {
-  const [snackFlag, setSnackFlag] = useState(false);
   return (
     <Fragment>
       <Notify type="error" message="Sorry, its just a test :(" />
-      <Navbar snackFlag={snackFlag} handleSnackbar={setSnackFlag} />
+      <Navbar handleSnackbar={() => toastNotify()} />
       {renderGrid(props)}
     </Fragment>
   );
