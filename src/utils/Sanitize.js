@@ -2,18 +2,23 @@ import React from "react";
 import sanitizeHtml from "sanitize-html";
 
 const defaultOptions = {
-  allowedTags: ["b", "i", "em", "strong", "a", "p"],
+  allowedTags: ["p", "a", "b", "i"],
   allowedAttributes: {
-    a: ["href"]
+    a: ["href"],
+    img: ["src"]
   },
-  allowedIframeHostnames: ["www.youtube.com"]
+  selfClosing: ["img"],
+  allowedSchemes: ["http", "https"],
+  allowedSchemesByTag: {},
+  allowedSchemesAppliedToAttributes: ["href", "src"],
+  allowProtocolRelative: true
 };
 
 const sanitize = (dirty, options) => ({
   __html: sanitizeHtml(dirty)
 });
 
-const SanitizeHTML = ({ html, options }) => (
+const SanitizeHTML = ({ html }) => (
   <div dangerouslySetInnerHTML={sanitize(html, defaultOptions)} />
 );
 
