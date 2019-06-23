@@ -12,7 +12,6 @@ import "./style.scss";
 
 const PostContainer = props => {
   const posts = props.post;
-  // const tags = tagFormatter(props.tags);
   return (
     <Grid stackable columns={4}>
       {posts.map(post => {
