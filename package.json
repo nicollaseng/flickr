@@ -18,7 +18,8 @@
     "react-spinners": "^0.5.4",
     "react-toastify": "^5.3.1",
     "sanitize-html": "^1.20.1",
-    "semantic-ui-react": "^0.87.2"
+    "semantic-ui-react": "^0.87.2",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "eslint-config-prettier": "^4.3.0",

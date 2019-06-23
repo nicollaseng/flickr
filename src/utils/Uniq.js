@@ -1,7 +1,7 @@
 import uniqBy from "lodash/uniqBy";
 
 const uniqPost = param => {
-  const data = uniqBy(param, post => post.date_taken && post.title);
+  const data = uniqBy(param, post => post.link && post.title);
   return data;
 };
 

@@ -32,13 +32,11 @@ class PostContainer extends Component {
 
   renderGrid = props => {
     const posts = props.post;
-    const { postsFiltered } = this.state;
-    console.log("posts que vemmmmm", posts);
 
     return (
       <div className="card_container">
         <Grid stackable columns={4}>
-          {posts.map(post => {
+          {posts.map((post, index) => {
             let tags = tagFormatter(post);
             let date = dateFormatter(post);
             let author = authorFormatter(post);
@@ -51,7 +49,7 @@ class PostContainer extends Component {
               separator: ""
             });
             return (
-              <Grid.Column key={post.date_taken}>
+              <Grid.Column key={index}>
                 <article className="card">
                   <header className="card_thumb">
                     <img
