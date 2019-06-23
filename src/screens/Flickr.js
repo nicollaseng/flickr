@@ -26,13 +26,13 @@ class Flickr extends Component {
     let tag = input && input.target ? input.target.value : this.state.tag;
     var data = await fetchData(tag);
 
-    this.setState(prevData => ({
+    this.setState(prevState => ({
       data:
         tag.length > 0
           ? uniqPost(data)
-          : prevData.tag.length > 0
-          ? [...cleanSearch(prevData.data, data), ...data]
-          : [...prevData.data, ...uniqPost(data)],
+          : prevState.tag.length > 0
+          ? [...cleanSearch(prevState.data, data), ...data]
+          : [...prevState.data, ...uniqPost(data)],
       tag
     }));
   };
