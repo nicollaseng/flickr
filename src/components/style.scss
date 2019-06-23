@@ -9,7 +9,7 @@ body {
   font-family: Open Sans;
   font-size: 16px;
   line-height: 1.4;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .card_container {
@@ -18,13 +18,13 @@ body {
 
 .card {
   background-color: #fff;
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 50px rgba(26, 255, 98, 0.1);
   transition: box-shadow $duration;
   overflow: hidden;
 }
 
 .card:hover {
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 50px rgba(26, 255, 98, 0.7);
 }
 
 .card_date {

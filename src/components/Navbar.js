@@ -22,20 +22,22 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#1aff62"
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
+    color: "rgba(0, 0, 0, 0.6)"
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
-    }
+    },
+    color: "rgba(0, 0, 0, 0.6)"
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade("rgba(0, 0, 0, 0.6)", 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
+      backgroundColor: fade("rgba(0, 0, 0, 0.6)", 0.25)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -52,10 +54,11 @@ const useStyles = makeStyles(theme => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    color: "rgba(0, 0, 0, 0.6)"
   },
   inputRoot: {
-    color: "inherit"
+    color: "rgba(0, 0, 0, 0.6)"
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
@@ -76,6 +79,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       display: "none"
     }
+  },
+  mail: {
+    color: "rgba(0, 0, 0, 0.6)"
+  },
+  notifications: {
+    color: "rgba(0, 0, 0, 0.6)"
   }
 }));
 
@@ -132,6 +141,7 @@ const NavBar = props => {
           aria-label="Show 4 new mails"
           color="inherit"
           onClick={props.handleSnackbar}
+          className={classes.mail}
         >
           <Badge badgeContent={4} color="secondary">
             <MailIcon />
@@ -144,6 +154,7 @@ const NavBar = props => {
           aria-label="Show 11 new notifications"
           color="inherit"
           onClick={props.handleSnackbar}
+          className={classes.notifications}
         >
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
@@ -193,6 +204,7 @@ const NavBar = props => {
               aria-label="Show 4 new mails"
               color="inherit"
               onClick={props.handleSnackbar}
+              className={classes.mail}
             >
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
@@ -202,6 +214,7 @@ const NavBar = props => {
               aria-label="Show 17 new notifications"
               color="inherit"
               onClick={props.handleSnackbar}
+              className={classes.notifications}
             >
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
