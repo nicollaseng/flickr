@@ -195,7 +195,7 @@ const NavBar = props => {
                 input: classes.inputInput
               }}
               inputProps={{ "aria-label": "Search" }}
-              onChange={props.handleSearch}
+              onBlur={props.handleSearch}
             />
           </div>
           <div className={classes.grow} />

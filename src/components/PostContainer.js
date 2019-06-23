@@ -33,14 +33,12 @@ class PostContainer extends Component {
   renderGrid = props => {
     const posts = props.post;
     const { postsFiltered } = this.state;
+    console.log("posts que vemmmmm", posts);
 
     return (
       <div className="card_container">
         <Grid stackable columns={4}>
-          {(postsFiltered && postsFiltered.length > 0
-            ? postsFiltered
-            : posts
-          ).map(post => {
+          {posts.map(post => {
             let tags = tagFormatter(post);
             let date = dateFormatter(post);
             let author = authorFormatter(post);
@@ -53,7 +51,7 @@ class PostContainer extends Component {
               separator: ""
             });
             return (
-              <Grid.Column key={post.author_id}>
+              <Grid.Column key={post.date_taken}>
                 <article className="card">
                   <header className="card_thumb">
                     <img
@@ -114,7 +112,7 @@ class PostContainer extends Component {
         <Notify type="error" message="Sorry, its just a test :(" />
         <Navbar
           handleSnackbar={() => toastNotify()}
-          handleSearch={this.handleSearch}
+          handleSearch={this.props.handleSearch}
         />
         {this.renderGrid(this.props)}
       </Fragment>
