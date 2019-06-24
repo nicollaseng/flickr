@@ -231,7 +231,7 @@ const NavBar = props => {
               color="inherit"
             >
               <img
-                src="https://avatars0.githubusercontent.com/u/39751943?s=400&u=2753b9e7aedd89c1e62f6e55eb6fe608b67abee9&v=4"
+                src={require("../assets/img/profile.jpeg")}
                 style={{ width: 40, height: 40, borderRadius: 20 }}
                 alt="profile_photo"
               />

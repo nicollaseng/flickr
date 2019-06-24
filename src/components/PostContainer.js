@@ -11,7 +11,7 @@ import filter from "lodash/filter";
 import Navbar from "./Navbar";
 import Notify, { toastNotify } from "./Notify";
 
-import "./style.scss";
+import "../scss/style.scss";
 
 class PostContainer extends Component {
   constructor(props) {

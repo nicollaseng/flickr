@@ -41,6 +41,10 @@ class Flickr extends Component {
     this.fetchData();
   };
 
+  scrollToTop = () => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   render() {
     const { data, isDataFiltered } = this.state;
     return (
@@ -60,6 +64,7 @@ class Flickr extends Component {
           </div>
         }
       >
+        {/* <Hook /> */}
         <PostContainer post={data} handleSearch={this.fetchData} />
       </InfiniteScroll>
     );
