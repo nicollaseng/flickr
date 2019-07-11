@@ -3,7 +3,8 @@ import InfiniteScroll from "react-infinite-scroller";
 import PostContainer from "../components/PostContainer";
 import Loader from "../components/Loader";
 import { fetchData } from "../server";
-import { uniqPost, cleanSearch } from "../utils/Uniq";
+import { fetchContent, fetchTag } from "../redux/actions/content";
+import { connect } from "react-redux";
 
 const styles = {
   loader: { marginTop: 20, color: "rgba(26, 255, 98, 0.9)" }
@@ -18,57 +19,70 @@ class Flickr extends Component {
       dataFiltered: [],
       isDataFiltered: false,
       tag: "",
-      page: 0
+      page: 0,
+      search: true
     };
   }
 
-  fetchData = async input => {
-    let tag = input && input.target ? input.target.value : this.state.tag;
-    var data = await fetchData(tag);
-
-    this.setState(prevState => ({
-      data:
-        tag.length > 0
-          ? uniqPost(data)
-          : prevState.tag.length > 0
-          ? [...cleanSearch(prevState.data, data), ...data]
-          : [...prevState.data, ...uniqPost(data)],
-      tag
-    }));
-  };
-
-  fetchMore = async page => {
-    this.fetchData();
-  };
-
-  scrollToTop = () => {
-    window.scroll({ top: 0, left: 0, behavior: "smooth" });
-  };
+  clearData = () => this.setState({ data: [] });
 
   render() {
-    const { data, isDataFiltered } = this.state;
+    const {
+      content,
+      tag,
+      tagContent,
+      type,
+      fetchTag,
+      fetchContent,
+      isRepeatedTagContent
+    } = this.props;
+
+    let isContent = type === "content";
+
     return (
       <InfiniteScroll
         pageStart={0}
-        loadMore={this.fetchMore}
-        hasMore={true || false}
+        loadMore={() =>
+          isContent ? fetchContent(content) : fetchTag(tag, tagContent, true)
+        }
+        hasMore={true}
         loader={
-          <div className="loader" key={0}>
-            <Loader
-              active
-              inline="centered"
-              className={styles.loader}
-              loading={isDataFiltered}
-            />
-            ;
-          </div>
+          !isRepeatedTagContent && (
+            <div className="loader" key={0}>
+              <Loader
+                active={!isRepeatedTagContent}
+                inline="centered"
+                className={styles.loader}
+                // loading={isDataFiltered}
+              />
+              ;
+            </div>
+          )
         }
       >
-        {/* <Hook /> */}
-        <PostContainer post={data} handleSearch={this.fetchData} />
+        <PostContainer
+          post={isContent ? content : tagContent}
+          clearData={this.clearData}
+        />
       </InfiniteScroll>
     );
   }
 }
 
-export default Flickr;
+const mapStateToProps = state => ({
+  content: state.content.content,
+  tag: state.content.tag,
+  tagContent: state.content.tagContent,
+  type: state.content.type,
+  isRepeatedTagContent: state.content.isRepeatedTagContent
+});
+
+const mapStateToDispatch = {
+  fetchTag,
+  fetchContent
+};
+
+export default connect(
+  mapStateToProps,
+  mapStateToDispatch
+)(Flickr);

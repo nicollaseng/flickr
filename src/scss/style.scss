@@ -59,25 +59,18 @@ body {
 }
 
 .card_thumb {
-  height: 220px;
+  height: 230px;
   background-color: #000;
   overflow: hidden;
-  transition: height $duration, transform $duration;
 
   img {
     display: block;
     opacity: 1;
     transition: opacity $duration;
-    transform: scale(1);
   }
 
   .card:hover & img {
     opacity: 0.6;
-    transform: scale(1.2);
-  }
-
-  .card:hover & {
-    height: 90px;
   }
 }
 
@@ -88,12 +81,8 @@ body {
 .card_body {
   position: relative;
   padding: 20px;
-  height: 185px;
+  height: 220px;
   transition: height $duration;
-
-  .card:hover & {
-    height: 185px + 145px;
-  }
 }
 
 .card_category {
@@ -113,7 +102,6 @@ body {
 .card_title {
   margin: 0;
   padding: 0 0 10px 0;
-
   font-size: 22px;
   color: #000;
   font-weight: bold;

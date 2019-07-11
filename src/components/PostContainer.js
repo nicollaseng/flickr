@@ -7,9 +7,10 @@ import {
 } from "../utils/Formatter";
 import Sanitize from "../utils/Sanitize";
 import truncate from "lodash/truncate";
-import filter from "lodash/filter";
 import Navbar from "./Navbar";
 import Notify, { toastNotify } from "./Notify";
+import { connect } from "react-redux";
+import { fetchTag, fetchContent } from "../redux/actions/content";
 
 import "../scss/style.scss";
 
@@ -21,13 +22,10 @@ class PostContainer extends Component {
     };
   }
 
-  handleSearch = data => {
+  handleSearch = async data => {
+    const { fetchTag, fetchContent, tag, tagContent } = this.props;
     let input = data.target.value;
-    let posts = this.props.post;
-    let postsFilter = filter(posts, post => post.tags.includes(input));
-    this.setState({
-      postsFiltered: input && input.length > 0 ? postsFilter : posts
-    });
+    return input.length > 0 ? await fetchTag(input) : await fetchContent();
   };
 
   renderGrid = props => {
@@ -113,7 +111,8 @@ class PostContainer extends Component {
         <Notify type="error" message="Sorry, its just a test :(" />
         <Navbar
           handleSnackbar={() => toastNotify()}
-          handleSearch={this.props.handleSearch}
+          handleSearch={this.handleSearch}
+          clearData={this.props.clearData}
         />
         {this.renderGrid(this.props)}
       </Fragment>
@@ -121,4 +120,17 @@ class PostContainer extends Component {
   }
 }
 
-export default PostContainer;
+const mapStateToProps = state => ({
+  tag: state.content.tag,
+  tagContent: state.content.tagContent
+});
+
+const mapStateToDispatch = {
+  fetchTag,
+  fetchContent
+};
+
+export default connect(
+  mapStateToProps,
+  mapStateToDispatch
+)(PostContainer);

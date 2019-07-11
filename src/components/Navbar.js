@@ -195,6 +195,7 @@ const NavBar = props => {
                 input: classes.inputInput
               }}
               inputProps={{ "aria-label": "Search" }}
+              onChange={() => props.clearData()}
               onKeyPress={event => {
                 if (event.key === "Enter") props.handleSearch(event);
               }}
